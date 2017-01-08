@@ -24,7 +24,7 @@ public class GameTest {
         playerOne.winBall();
         playerTwo.winBall();
         //Then
-        assertEquals(set.getScore(),"Forty Fifty");
+        assertEquals(set.getScore(),"forty fifteen");
     }
     @Test
     public void testDeuce(){

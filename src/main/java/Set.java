@@ -7,10 +7,10 @@ public class Set {
     private static HashMap<Integer, String> ruleScore = new HashMap<Integer, String>();
 
     static {
-        ruleScore.put(0, "Zero");
-        ruleScore.put(1, "Fifty");
+        ruleScore.put(0, "zero");
+        ruleScore.put(1, "fifteen");
         ruleScore.put(2, "Thirty");
-        ruleScore.put(3, "Forty");
+        ruleScore.put(3, "forty");
     }
 
     public Set(Player playerOne, Player playerTwo) {
