@@ -25,14 +25,12 @@ public final class Game extends Set {
         if (playerOne.getScore() >= 3 && playerTwo.getScore() >= 3) {
             if (playerOne.getScore() == playerTwo.getScore()) {
                 return "deuce";
-                //changer pas is winner
             } else if (Math.abs(playerOne.getScore() - playerTwo.getScore()) >= 2) {
                 return getLeader().getName() + " won the game";
             } else {
                 return "Advantage for " + getLeader().getName();
             }
         } else {
-            //changer pas is winner
             if ((playerOne.getScore() > 3 && playerTwo.getScore() < 3) || (playerOne.getScore() < 3 && playerTwo.getScore() > 3)) {
                 return getLeader().getName() + " won the game";
             } else {

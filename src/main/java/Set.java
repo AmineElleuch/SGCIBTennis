@@ -24,7 +24,7 @@ public class Set extends Match {
     }
 
     public String getScoreGame() {
-        String result ="";
+        String result = "";
         for (Map.Entry<String, Integer> entry : scoreGame.entrySet()) {
             String key = entry.getKey();
             Integer value = entry.getValue();
@@ -38,11 +38,7 @@ public class Set extends Match {
         if (isWinnerSet(player)) {
             super.incrementScoreSet(player);
             System.out.println(player + " is the winner of this set with " + scoreGame.get(player) + " games");
-            try {
-                super.isWinnerFinal(player);
-            }
-            catch (EndMatchException e){
-                System.exit(1);};
+            super.isWinnerFinal(player);
             this.intialiseScoreGame();
         }
     }

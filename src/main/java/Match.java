@@ -19,11 +19,13 @@ public class Match {
         scoreSet.put(player, scoreSet.get(player) + 1);
     }
 
-    public void isWinnerFinal(String player) throws EndMatchException {
+    public String isWinnerFinal(String player) {
+        String result ="";
         if (scoreSet.get(player) == 2) {
             System.out.println(player + " Won the Match");
-            throw new EndMatchException();
+            result = player;
         }
+        return result;
     }
 
     public String getScoreSet() {

@@ -65,9 +65,8 @@ public class GameTest {
             game.winBall(playerOne);
         }
         //Then
-        assertEquals(game.getScoreGame()," Player John score Game :0 Player Marion score Game :1");
+        assertEquals(game.getScoreGame(), " Player John score Game :0 Player Marion score Game :1");
     }
-
 
 
     @Test
@@ -77,8 +76,29 @@ public class GameTest {
             game.winBall(playerOne);
         }
         //Then
-        assertEquals(game.getScoreSet()," Player John score Set: 0 Player Marion score Set: 1");
+        assertEquals(game.getScoreSet(), " Player John score Set: 0 Player Marion score Set: 1");
     }
+
+    @Test
+    public void testWinMatch() {
+        //When
+        for (int i = 0; i <= 31; i++) {
+            game.winBall(playerOne);
+            //Then
+        }
+        assertEquals(game.isWinnerFinal(playerOne.getName()), "Marion");
+    }
+
+    @Test
+    public void testNoOneHasWonMatchYet() {
+        //When
+        for (int i = 0; i <= 29; i++) {
+            game.winBall(playerOne);
+            //Then
+        }
+        assertEquals(game.isWinnerFinal(playerOne.getName()),"");
+    }
+
 
     @Test
     public void testTieBreak() {
@@ -89,7 +109,7 @@ public class GameTest {
         for (int i = 0; i <= 22; i++) {
             game.winBall(playerTwo);
         }
-        assertEquals(game.getTiebreak(),7);
+        assertEquals(game.getTiebreak(), 7);
     }
 
 }
