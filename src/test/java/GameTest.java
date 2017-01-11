@@ -1,33 +1,36 @@
 import org.junit.Before;
 import org.junit.Test;
+
 import static org.junit.Assert.*;
 
 public class GameTest {
 
     private Player playerOne;
     private Player playerTwo;
-    private Set set;
+    private Game game;
+
 
     @Before
     //Given
     public void intialiseGame() {
-        playerOne = new Player("John");
-        playerTwo = new Player("Marion");
-        set = new Set(playerOne, playerTwo);
+        playerOne = new Player("Marion");
+        playerTwo = new Player("John");
+        game = new Game(playerOne, playerTwo);
     }
 
     @Test
-    public void testGetScore(){
+    public void testGetScore() {
         //When
         playerOne.winBall();
         playerOne.winBall();
         playerOne.winBall();
         playerTwo.winBall();
         //Then
-        assertEquals(set.getScore(),"forty fifteen");
+        assertEquals(game.getScore(), "forty fifteen");
     }
+
     @Test
-    public void testDeuce(){
+    public void testDeuce() {
         //When
         playerOne.winBall();
         playerOne.winBall();
@@ -36,26 +39,12 @@ public class GameTest {
         playerTwo.winBall();
         playerTwo.winBall();
         //Then
-        assertEquals(set.getScore(),"deuce");
-    }
-    @Test
-    public void testTieBreak(){
-        //When
-        playerOne.winBall();
-        playerOne.winBall();
-        playerOne.winBall();
-        playerOne.winBall();
-        playerTwo.winBall();
-        playerTwo.winBall();
-        playerTwo.winBall();
-        playerTwo.winBall();
-        //Then
-        assertEquals(set.getScore(),"deuce");
+        assertEquals(game.getScore(), "deuce");
     }
 
 
     @Test
-    public void testAdvantage(){
+    public void testAdvantage() {
         //When
         playerOne.winBall();
         playerOne.winBall();
@@ -66,19 +55,41 @@ public class GameTest {
         playerTwo.winBall();
 
         //Then
-        assertEquals(set.getScore(),"Advantage for Marion");
+        assertEquals(game.getScore(), "Advantage for Marion");
     }
 
     @Test
-    public void testWinner(){
+    public void testWinGame() {
         //When
-        playerOne.winBall();
-        playerOne.winBall();
-        playerOne.winBall();
-        playerOne.winBall();
+        for (int i = 0; i <= 3; i++) {
+            game.winBall(playerOne);
+        }
         //Then
-        assertEquals(set.getScore(),"John won");
+        assertEquals(game.getScoreGame()," Player John score Game :0 Player Marion score Game :1");
     }
 
+
+
+    @Test
+    public void testWinSet() {
+        //When
+        for (int i = 0; i <= 23; i++) {
+            game.winBall(playerOne);
+        }
+        //Then
+        assertEquals(game.getScoreSet()," Player John score Set: 0 Player Marion score Set: 1");
+    }
+
+    @Test
+    public void testTieBreak() {
+        //When
+        for (int i = 0; i <= 22; i++) {
+            game.winBall(playerOne);
+        }
+        for (int i = 0; i <= 22; i++) {
+            game.winBall(playerTwo);
+        }
+        assertEquals(game.getTiebreak(),7);
+    }
 
 }

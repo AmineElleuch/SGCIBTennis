@@ -3,15 +3,11 @@
 public class Player {
 
     private String name;
-    private int score ;
+    private int score;
 
-    public Player(String name){
+    public Player(String name) {
         this.name = name;
         this.score = 0;
-    }
-
-    public void winBall(){
-        this.score++;
     }
 
     public String getName() {
@@ -29,4 +25,22 @@ public class Player {
     public void setScore(int score) {
         this.score = score;
     }
+
+
+    public void winBall() {
+        this.score++;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Player player = (Player) o;
+
+        if (score != player.score) return false;
+        return !(name != null ? !name.equals(player.name) : player.name != null);
+
+    }
+
 }
